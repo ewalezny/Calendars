@@ -1,6 +1,13 @@
 # Calendars
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Final project made in CodersLab.
+It's a responsive app for organizing time schedules of a team. Manager panel allows to add projects and assign them to team members. Each member panel has a list of projects and a calendar with deadlines.
+
+## Live demo
+
+## Technologies
+
+React, React Router, Material UI, context API, firebase, HTML
 
 ## To run the project
 
