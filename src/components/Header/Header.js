@@ -53,11 +53,11 @@ const Header = () => {
                             onClose={handleCloseNavMenu}
                             sx={{display: {xs: "block", md: "none"}}}
                         >
-                            <MenuItem key={"kierownik"} component={NavLink} to={'/'}>
+                            <MenuItem key={"kierownik"} component={NavLink} to={'/'} onClick={handleCloseNavMenu}>
                                 <Typography>Panel kierownika</Typography>
                             </MenuItem>
                             {teamMembers.map((member, i) => (
-                                <MenuItem key={i} component={NavLink} to={`/person${i+1}`}>
+                                <MenuItem key={i} component={NavLink} to={`/generic/${i+1}`} onClick={handleCloseNavMenu}>
                                     <Typography>{member}</Typography>
                                 </MenuItem>
                             ))}
@@ -84,7 +84,7 @@ const Header = () => {
                             <Button
                                 key={i}
                                 component={NavLink}
-                                to={`/person${i+1}`}
+                                to={`/generic/${i+1}`}
                                 sx={{color: "white", diplay: "block", paddingLeft: "20px" }}
                             >
                                 {member}
