@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Main from "./components/Main";
 import NotFound from "./components/NotFound";
 import Person from "./components/Person";
+import FormDialog from "./components/FormDialog";
 
 const theme = createTheme({
     palette: {
@@ -23,6 +24,7 @@ const App = () => {
         <HashRouter>
             <ThemeProvider theme={theme}>
                 <CssBaseline/>
+                <FormDialog />
                 <Header/>
                 <Switch>
                     <Route exact path='/' component={Main}/>
