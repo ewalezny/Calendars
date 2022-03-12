@@ -1,12 +1,11 @@
 import React from "react";
-import {HashRouter, Route, Switch} from "react-router-dom";
+import {HashRouter, Routes, Route} from "react-router-dom";
 import {ThemeProvider, createTheme} from "@mui/material/styles";
-import {CssBaseline} from "@mui/material";
-import Header from "./components/Header";
-import Main from "./components/Main";
 import NotFound from "./components/NotFound";
-import Person from "./components/Person";
-import FormDialog from "./components/FormDialog";
+import Login from "./components/auth/Login";
+import Register from "./components/auth/Register";
+import Reset from "./components/auth/Reset";
+import AddProject from "./components/app/AddProject";
 
 const theme = createTheme({
     palette: {
@@ -21,18 +20,17 @@ const theme = createTheme({
 
 const App = () => {
     return (
-        <HashRouter>
-            <ThemeProvider theme={theme}>
-                <CssBaseline/>
-                <FormDialog />
-                <Header/>
-                <Switch>
-                    <Route exact path='/' component={Main}/>
-                    <Route path='/generic/:id?' component={Person}/>
-                    <Route component={NotFound}/>
-                </Switch>
-            </ThemeProvider>
-        </HashRouter>
+        <ThemeProvider theme={theme}>
+            <HashRouter>
+                <Routes>
+                    <Route exact path='/' element={<Login/>}/>
+                    <Route path='/register' element={<Register/>}/>
+                    <Route path='/reset' element={<Reset />}/>
+                    <Route path='/addProject' element={<AddProject/>}/>
+                    <Route element={<NotFound/>}/>
+                </Routes>
+            </HashRouter>
+        </ThemeProvider>
     )
 }
 
