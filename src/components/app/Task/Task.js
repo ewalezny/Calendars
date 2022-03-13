@@ -1,25 +1,51 @@
-import React from "react";
-import {Container, Paper, Typography} from "@mui/material";
+import React, {useState} from "react";
+import {IconButton, Paper, Typography} from "@mui/material";
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditTask from "../EditTask";
 
 const Task = ({id, title, description}) => {
+    const [edit, setEdit] = useState(false);
+
+    const handleClose = () => {
+        setEdit(false);
+    }
+
     return (
         <Paper elevation={4}
-               sx={{margin: "20px"}}>
-            <Typography
-                variant="h5"
-                component="h2"
-                sx={{padding: "15px"}}
-                color={"secondary"}
-            >
-                Zadanie: {title}
-            </Typography>
-            <Typography
-                variant="p"
-                component="h2"
-                sx={{padding: "15px", fontWeight: "normal"}}
-            >
-                Opis: {description}
-            </Typography>
+               sx={{margin: "20px", display: "flex", justifyContent: "space-between", alignItems: "center"}}>
+            <div>
+                <Typography
+                    variant="h5"
+                    component="h2"
+                    sx={{padding: "15px"}}
+                    color={"secondary"}
+                >
+                    Zadanie: {title}
+                </Typography>
+                <Typography
+                    variant="p"
+                    component="h2"
+                    sx={{padding: "15px", fontWeight: "normal"}}
+                >
+                    Opis: {description}
+                </Typography>
+            </div>
+            <div style={{margin: "15px"}}>
+                <IconButton onClick={() => setEdit(true)} color={"secondary"}>
+                    <EditIcon/>
+                </IconButton>
+                <IconButton color={"secondary"}>
+                    <DeleteIcon/>
+                </IconButton>
+            </div>
+            {edit && <EditTask
+                onClose={handleClose}
+                toEditTitle={title}
+                toEditDescription={description}
+                open={edit}
+                id={id}
+            />}
         </Paper>
     )
 }
