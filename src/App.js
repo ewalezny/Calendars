@@ -5,7 +5,8 @@ import NotFound from "./components/NotFound";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Reset from "./components/auth/Reset";
-import AddProject from "./components/app/AddProject";
+import AddTask from "./components/app/AddTask";
+import TasksList from "./components/app/TasksList";
 
 const theme = createTheme({
     palette: {
@@ -26,7 +27,8 @@ const App = () => {
                     <Route exact path='/' element={<Login/>}/>
                     <Route path='/register' element={<Register/>}/>
                     <Route path='/reset' element={<Reset />}/>
-                    <Route path='/addProject' element={<AddProject/>}/>
+                    <Route path='/addTask' element={<AddTask/>}/>
+                    <Route path={'/tasksList'} element={<TasksList/>}/>
                     <Route element={<NotFound/>}/>
                 </Routes>
             </HashRouter>

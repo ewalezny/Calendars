@@ -11,7 +11,7 @@ const Reset = () => {
 
     useEffect(() => {
         if (loading) return;
-        if (user) navigate("/addProject");
+        if (user) navigate("/addTask");
     }, [user, loading])
 
     return (

@@ -18,7 +18,7 @@ const Register = () => {
 
     useEffect(() => {
         if (loading) return;
-        if (user) navigate("/addProject", { replace: true })
+        if (user) navigate("/addTask", { replace: true })
     }, [user, loading])
 
     return (

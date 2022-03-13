@@ -85,11 +85,11 @@ const Header = () => {
                             onClose={handleCloseNavMenu}
                             sx={{display: {xs: "block", md: "none"}}}
                         >
-                            <MenuItem key={"addProject"} component={NavLink} to={'/addProject'} onClick={handleCloseNavMenu}>
-                                <Typography>Dodaj projekt</Typography>
+                            <MenuItem key={"addTask"} component={NavLink} to={'/addTask'} onClick={handleCloseNavMenu}>
+                                <Typography>Dodaj zadanie</Typography>
                             </MenuItem>
-                            <MenuItem key={"projectsList"} component={NavLink} to={'/projectsList'} onClick={handleCloseNavMenu}>
-                                <Typography>Lista projektów</Typography>
+                            <MenuItem key={"tasksList"} component={NavLink} to={'/tasksList'} onClick={handleCloseNavMenu}>
+                                <Typography>Lista zadań</Typography>
                             </MenuItem>
                             <MenuItem key={"calendar"} component={NavLink} to={'/calendar'} onClick={handleCloseNavMenu}>
                                 <Typography>Kalendarz</Typography>
@@ -106,20 +106,20 @@ const Header = () => {
                     </Typography>
                     <Box sx={{flexGrow: 1, display: {xs: "none", md: "flex"}, justifyContent: "flex-end"}}>
                         <Button
-                            key={"addProject"}
+                            key={"addTask"}
                             component={NavLink}
-                            to={'/addProject'}
+                            to={'/addTask'}
                             sx={{color: "white", display: "block" }}
                         >
-                            Dodaj projekt
+                            Dodaj zadanie
                         </Button>
                         <Button
-                            key={"projectsList"}
+                            key={"tasksList"}
                             component={NavLink}
-                            to={'/projectsList'}
+                            to={'/tasksList'}
                             sx={{color: "white", display: "block", marginLeft: "10px" }}
                         >
-                            Lista projektów
+                            Lista zadań
                         </Button>
                         <Button
                             key={"calendar"}
