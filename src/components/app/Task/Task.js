@@ -3,12 +3,23 @@ import {IconButton, Paper, Typography} from "@mui/material";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditTask from "../EditTask";
+import { db } from "../../../firebase";
+import { doc, deleteDoc } from "firebase/firestore";
 
 const Task = ({id, title, description}) => {
     const [edit, setEdit] = useState(false);
 
     const handleClose = () => {
         setEdit(false);
+    }
+
+    const handleDelete = async () => {
+        const taskDocRef = doc(db, "taskList", id)
+        try {
+            await deleteDoc(taskDocRef)
+        } catch(err) {
+            console.log(err)
+        }
     }
 
     return (
@@ -35,7 +46,7 @@ const Task = ({id, title, description}) => {
                 <IconButton onClick={() => setEdit(true)} color={"secondary"}>
                     <EditIcon/>
                 </IconButton>
-                <IconButton color={"secondary"}>
+                <IconButton onClick={handleDelete} color={"secondary"}>
                     <DeleteIcon/>
                 </IconButton>
             </div>
