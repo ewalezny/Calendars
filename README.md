@@ -1,13 +1,13 @@
 # Calendars
 
 Final project made in CodersLab.
-It's a responsive app for organizing time schedules of a team. Manager panel allows to add projects and assign them to team members. Each member panel has a list of projects and a calendar with deadlines.
+It's a responsive app for organizing time schedules. There is a form to add a task, list of tasks and a calendar with deadlines.
 
 ## Live demo
 
 ## Technologies
 
-React, React Router, Material UI, context API, firebase, HTML
+React, React Router, Material UI, firebase, HTML
 
 ## To run the project
 
