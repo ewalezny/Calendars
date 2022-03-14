@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {auth, logInWithEmailAndPassword} from "../../../firebase";
 import {useAuthState} from "react-firebase-hooks/auth";
-import {Button, Container, Grid, Paper, TextField, Typography} from "@mui/material";
+import {Button, Container, Paper, TextField, Typography} from "@mui/material";
 
 const Login = () => {
     const [email, setEmail] = useState("");

@@ -7,7 +7,7 @@ import Register from "./components/auth/Register";
 import Reset from "./components/auth/Reset";
 import AddTask from "./components/app/AddTask";
 import TasksList from "./components/app/TasksList";
-import Calendar from "./components/app/Calendar";
+import Calendars from "./components/app/Calendar";
 
 const theme = createTheme({
     palette: {
@@ -30,7 +30,7 @@ const App = () => {
                     <Route path='/reset' element={<Reset />}/>
                     <Route path='/addTask' element={<AddTask/>}/>
                     <Route path={'/tasksList'} element={<TasksList/>}/>
-                    <Route path={'/calendar'} element={<Calendar/>}/>
+                    <Route path={'/calendar'} element={<Calendars/>}/>
                     <Route element={<NotFound/>}/>
                 </Routes>
             </HashRouter>

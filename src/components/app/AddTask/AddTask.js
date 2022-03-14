@@ -1,13 +1,25 @@
-import React, { useState } from "react";
-import {Button, Container, Paper, TextField, Typography} from "@mui/material";
+import React, {useState} from "react";
+import {Button, Container, Paper, Stack, TextField, Typography} from "@mui/material";
 import {AddCircleOutlineRounded} from "@mui/icons-material";
 import Header from "../Header";
-import { db } from "../../../firebase";
+import {db} from "../../../firebase";
 import {addDoc, collection, Timestamp} from "firebase/firestore";
+import DateAdapter from '@mui/lab/AdapterDateFns';
+import {DateTimePicker, LocalizationProvider} from "@mui/lab";
 
 const AddTask = () => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
+    const [start, setStart] = useState(Date.now());
+    const [end, setEnd] = useState(Date.now());
+
+    const handleChangeStart = newStart => {
+        setStart(newStart.getTime());
+    }
+
+    const handleChangeEnd = newEnd => {
+        setEnd(newEnd.getTime());
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -15,18 +27,23 @@ const AddTask = () => {
             await addDoc(collection(db, "taskList"), {
                 title,
                 description,
-                created: Timestamp.now()
+                created: Timestamp.now(),
+                start,
+                end,
+                allDay: false
             })
         } catch (err) {
             console.log(err)
         }
         setTitle("");
         setDescription("");
+        setStart(Date.now());
+        setEnd(Date.now());
     }
 
     return (
         <>
-            <Header />
+            <Header/>
             <Container>
                 <form onSubmit={handleSubmit}>
                     <Paper elevation={4}
@@ -52,17 +69,35 @@ const AddTask = () => {
                             type={"text"}
                             label={"Opis"}
                             variant={"outlined"}
-                            sx={{margin: "15px", width: "95%"}}
+                            sx={{margin: "15px", width: "95%", marginBottom: "30px"}}
                             value={description}
                             onChange={e => setDescription(e.target.value)}
                         />
+                        <LocalizationProvider dateAdapter={DateAdapter}>
+                            <Stack spacing={4}>
+                                <DateTimePicker
+                                    label="Data rozpoczęcia"
+                                    ampm={false}
+                                    onChange={handleChangeStart}
+                                    value={start}
+                                    renderInput={(params) => <TextField {...params} />}
+                                 />
+                                <DateTimePicker
+                                    label="Data zakończenia"
+                                    ampm={false}
+                                    onChange={handleChangeEnd}
+                                    value={end}
+                                    renderInput={(params) => <TextField {...params} />}
+                                />
+                            </Stack>
+                        </LocalizationProvider>
                         <Button
                             type="submit"
-                            startIcon={<AddCircleOutlineRounded />}
+                            startIcon={<AddCircleOutlineRounded/>}
                             color={"secondary"}
                             variant={"contained"}
                             size={"large"}
-                            sx={{margin: "15px", width: "50%", padding: "10px", fontSize: "1rem"}}
+                            sx={{margin: "30px", width: "50%", padding: "10px", fontSize: "1rem"}}
                         >
                             Dodaj
                         </Button>
