@@ -27,7 +27,7 @@ const Login = () => {
                         sx={{padding: "20px"}}
                         color={"secondary"}
                     >
-                        Logowanie
+                        Log in
                     </Typography>
                     <TextField
                         type={"text"}
@@ -39,7 +39,7 @@ const Login = () => {
                     />
                     <TextField
                         type={"password"}
-                        label={"Hasło"}
+                        label={"Password"}
                         value={password}
                         onChange={e => setPassword(e.target.value)}
                         variant={"outlined"}
@@ -52,17 +52,17 @@ const Login = () => {
                         sx={{margin: "15px", width: "50%", padding: "10px", fontSize: "1rem"}}
                         onClick={() => logInWithEmailAndPassword(email, password)}
                     >
-                        Zaloguj
+                        Log in
                     </Button>
                     <div style={{ margin: "15px" }}>
                         <Link to="/reset">
                             <Typography variant="body1" paragraph align="center">
-                                Zapomniałeś hasła?
+                                Forgot password?
                             </Typography>
                         </Link>
                         <Link to="/register">
                             <Typography variant="body1" paragraph align="center">
-                                Nie masz jeszcze konta? Załóż je.
+                                Don't have an account? Register.
                             </Typography>
                         </Link>
                     </div>

@@ -86,13 +86,13 @@ const Header = () => {
                             sx={{display: {xs: "block", md: "none"}}}
                         >
                             <MenuItem key={"addTask"} component={NavLink} to={'/addTask'} onClick={handleCloseNavMenu}>
-                                <Typography>Dodaj zadanie</Typography>
+                                <Typography>Add task</Typography>
                             </MenuItem>
                             <MenuItem key={"tasksList"} component={NavLink} to={'/tasksList'} onClick={handleCloseNavMenu}>
-                                <Typography>Lista zadań</Typography>
+                                <Typography>Tasks list</Typography>
                             </MenuItem>
                             <MenuItem key={"calendar"} component={NavLink} to={'/calendar'} onClick={handleCloseNavMenu}>
-                                <Typography>Kalendarz</Typography>
+                                <Typography>Calendar</Typography>
                             </MenuItem>
                         </Menu>
                     </Box>
@@ -111,7 +111,7 @@ const Header = () => {
                             to={'/addTask'}
                             sx={{color: "white", display: "block" }}
                         >
-                            Dodaj zadanie
+                            Add task
                         </Button>
                         <Button
                             key={"tasksList"}
@@ -119,7 +119,7 @@ const Header = () => {
                             to={'/tasksList'}
                             sx={{color: "white", display: "block", marginLeft: "10px" }}
                         >
-                            Lista zadań
+                            Tasks list
                         </Button>
                         <Button
                             key={"calendar"}
@@ -127,7 +127,7 @@ const Header = () => {
                             to={'/calendar'}
                             sx={{color: "white", display: "block", marginLeft: "10px" }}
                         >
-                            Kalendarz
+                            Calendar
                         </Button>
                     </Box>
                     <IconButton
@@ -143,7 +143,7 @@ const Header = () => {
                         onClose={handleCloseUserMenu}
                     >
                         <MenuItem key="LogOut" onClick={logout}>
-                            <Typography textAlign="center">Wyloguj</Typography>
+                            <Typography textAlign="center">Log out</Typography>
                         </MenuItem>
                     </Menu>
                 </Toolbar>

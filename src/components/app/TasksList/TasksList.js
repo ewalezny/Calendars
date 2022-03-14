@@ -31,7 +31,7 @@ const TasksList = () => {
                         sx={{padding: "20px"}}
                         color={"secondary"}
                     >
-                        Lista zadań
+                        Tasks list
                     </Typography>
                     <ul style={{width: "95%", marginLeft: "-40px"}}>
                         {taskList.map(task => (

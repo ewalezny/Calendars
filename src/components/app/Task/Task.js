@@ -32,14 +32,14 @@ const Task = ({id, title, description}) => {
                     sx={{padding: "15px"}}
                     color={"secondary"}
                 >
-                    Zadanie: {title}
+                    Name: {title}
                 </Typography>
                 <Typography
                     variant="p"
                     component="h2"
                     sx={{padding: "15px", fontWeight: "normal"}}
                 >
-                    Opis: {description}
+                    Description: {description}
                 </Typography>
             </div>
             <div style={{margin: "15px"}}>

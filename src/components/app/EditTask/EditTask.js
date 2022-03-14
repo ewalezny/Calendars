@@ -48,18 +48,18 @@ const EditTask = ({open, onClose, toEditTitle, toEditDescription, id}) => {
                         sx={{padding: "10px"}}
                         color={"secondary"}
                     >
-                        Edycja
+                        Edit task
                     </Typography>
                     <TextField
                         type={"text"}
-                        label={"Zadanie"}
+                        label={"Task name"}
                         sx={{margin: "15px", width: "100%"}}
                         value={title}
                         onChange={e => setTitle(e.target.value)}
                     />
                     <TextField
                         type={"text"}
-                        label={"Opis"}
+                        label={"Task description"}
                         sx={{margin: "15px", marginBottom: "30px", width: "100%"}}
                         value={description}
                         onChange={e => setDescription(e.target.value)}
@@ -67,14 +67,14 @@ const EditTask = ({open, onClose, toEditTitle, toEditDescription, id}) => {
                     <LocalizationProvider dateAdapter={DateAdapter}>
                         <Stack spacing={4}>
                             <DateTimePicker
-                                label="Data rozpoczęcia"
+                                label="Start date"
                                 ampm={false}
                                 onChange={handleChangeStart}
                                 value={start}
                                 renderInput={(params) => <TextField {...params} />}
                             />
                             <DateTimePicker
-                                label="Data zakończenia"
+                                label="End date"
                                 ampm={false}
                                 onChange={handleChangeEnd}
                                 value={end}
@@ -89,7 +89,7 @@ const EditTask = ({open, onClose, toEditTitle, toEditDescription, id}) => {
                         size={"large"}
                         sx={{margin: "15px", width: "50%", padding: "10px", fontSize: "1rem", marginTop: "30px"}}
                     >
-                        Zapisz
+                        Save
                     </Button>
                 </form>
             </DialogContent>

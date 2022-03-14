@@ -26,7 +26,7 @@ const Reset = () => {
                         sx={{padding: "20px"}}
                         color={"secondary"}
                     >
-                        Resetowanie hasła
+                        Reset your password
                     </Typography>
                     <TextField
                         type={"text"}
@@ -43,12 +43,12 @@ const Reset = () => {
                         sx={{margin: "15px", width: "50%", padding: "10px", fontSize: "1rem"}}
                         onClick={() => sendPasswordReset(email)}
                     >
-                        Wyślij
+                        Send
                     </Button>
                     <div style={{ margin: "15px" }}>
                         <Link to="/register">
                             <Typography variant="body1" paragraph align="center">
-                                Nie masz jeszcze konta? Załóż je.
+                                Don't have an account? Register.
                             </Typography>
                         </Link>
                     </div>

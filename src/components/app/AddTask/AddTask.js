@@ -55,11 +55,11 @@ const AddTask = () => {
                             sx={{padding: "20px"}}
                             color={"secondary"}
                         >
-                            Dodaj nowe zadanie
+                            Add new task
                         </Typography>
                         <TextField
                             type={"text"}
-                            label={"Zadanie"}
+                            label={"Task name"}
                             variant={"outlined"}
                             sx={{margin: "15px", width: "95%"}}
                             value={title}
@@ -67,7 +67,7 @@ const AddTask = () => {
                         />
                         <TextField
                             type={"text"}
-                            label={"Opis"}
+                            label={"Task description"}
                             variant={"outlined"}
                             sx={{margin: "15px", width: "95%", marginBottom: "30px"}}
                             value={description}
@@ -76,14 +76,14 @@ const AddTask = () => {
                         <LocalizationProvider dateAdapter={DateAdapter}>
                             <Stack spacing={4}>
                                 <DateTimePicker
-                                    label="Data rozpoczęcia"
+                                    label="Start date"
                                     ampm={false}
                                     onChange={handleChangeStart}
                                     value={start}
                                     renderInput={(params) => <TextField {...params} />}
                                  />
                                 <DateTimePicker
-                                    label="Data zakończenia"
+                                    label="End date"
                                     ampm={false}
                                     onChange={handleChangeEnd}
                                     value={end}
@@ -99,7 +99,7 @@ const AddTask = () => {
                             size={"large"}
                             sx={{margin: "30px", width: "50%", padding: "10px", fontSize: "1rem"}}
                         >
-                            Dodaj
+                            Add
                         </Button>
                     </Paper>
                 </form>

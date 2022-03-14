@@ -33,11 +33,11 @@ const Register = () => {
                         sx={{padding: "20px"}}
                         color={"secondary"}
                     >
-                        Rejestracja
+                        Register
                     </Typography>
                     <TextField
                         type={"text"}
-                        label={"Imię"}
+                        label={"Name"}
                         value={name}
                         onChange={e => setName(e.target.value)}
                         variant={"outlined"}
@@ -53,7 +53,7 @@ const Register = () => {
                     />
                     <TextField
                         type={"password"}
-                        label={"Hasło"}
+                        label={"Password"}
                         value={password}
                         onChange={e => setPassword(e.target.value)}
                         variant={"outlined"}
@@ -66,12 +66,12 @@ const Register = () => {
                         sx={{margin: "15px", width: "50%", padding: "10px", fontSize: "1rem"}}
                         onClick={register}
                     >
-                        Załóż konto
+                        Register
                     </Button>
                     <div style={{ margin: "15px" }}>
                         <Link to="/">
                             <Typography variant="body1" paragraph align="center">
-                                Masz już konto? Zaloguj się.
+                                Already have an account? Log in.
                             </Typography>
                         </Link>
                     </div>
