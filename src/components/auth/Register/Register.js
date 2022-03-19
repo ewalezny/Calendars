@@ -22,7 +22,7 @@ const Register = () => {
     }, [user, loading, navigate])
 
     return (
-        <Container maxWidth="xl">
+        <Container>
             <form>
                 <Paper elevation={10}
                        sx={{margin: "50px", display: "flex", flexDirection: "column", alignItems: "center"}}>
