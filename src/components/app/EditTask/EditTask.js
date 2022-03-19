@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import {doc, updateDoc} from "firebase/firestore";
 import {db} from "../../../firebase";
 import {Button, Dialog, DialogContent, Stack, TextField, Typography} from "@mui/material";
-import {AddCircleOutlineRounded} from "@mui/icons-material";
 import {DateTimePicker, LocalizationProvider} from "@mui/lab";
 import DateAdapter from "@mui/lab/AdapterDateFns";
 

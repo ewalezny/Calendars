@@ -11,7 +11,7 @@ import { query, collection, getDocs, where } from "firebase/firestore";
 const Header = () => {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
-    const [user, loading, error] = useAuthState(auth);
+    const [user, loading] = useAuthState(auth);
     const [name, setName] = useState("");
     const navigate = useNavigate();
 
@@ -30,7 +30,7 @@ const Header = () => {
         if (loading) return;
         if (!user) return navigate('/');
         fetchUserName();
-    }, [user, loading]);
+    }, [user, loading, fetchUserName, navigate]);
 
     const handleOpenNavMenu = e => {
         setAnchorElNav(e.currentTarget);
