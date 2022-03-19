@@ -12,10 +12,10 @@ import Calendars from "./components/app/Calendar";
 const theme = createTheme({
     palette: {
         primary: {
-            main: "#0d47a1"
+            main: "#284862"
         },
         secondary: {
-            main: "#1976d2"
+            main: "#3d6c93"
         }
     }
 })
