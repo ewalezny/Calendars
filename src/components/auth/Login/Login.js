@@ -55,12 +55,12 @@ const Login = () => {
                         Log in
                     </Button>
                     <div style={{ margin: "15px" }}>
-                        <Link to="/reset">
+                        <Link to="/reset" style={{ textDecoration: "none", color: "black" }}>
                             <Typography variant="body1" paragraph align="center">
                                 Forgot password?
                             </Typography>
                         </Link>
-                        <Link to="/register">
+                        <Link to="/register" style={{ textDecoration: "none", color: "black" }}>
                             <Typography variant="body1" paragraph align="center">
                                 Don't have an account? Register.
                             </Typography>

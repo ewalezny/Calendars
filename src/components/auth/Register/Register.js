@@ -69,7 +69,7 @@ const Register = () => {
                         Register
                     </Button>
                     <div style={{ margin: "15px" }}>
-                        <Link to="/">
+                        <Link to="/" style={{ textDecoration: "none", color: "black" }}>
                             <Typography variant="body1" paragraph align="center">
                                 Already have an account? Log in.
                             </Typography>
