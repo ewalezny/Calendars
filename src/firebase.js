@@ -14,13 +14,13 @@ import {
 } from "firebase/firestore";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCzdUrG0K8ujvsFl2jwSyOj1Pus0HwnZRs",
-    authDomain: "calendars-3ab51.firebaseapp.com",
-    projectId: "calendars-3ab51",
-    storageBucket: "calendars-3ab51.appspot.com",
-    messagingSenderId: "890787498203",
-    appId: "1:890787498203:web:f16ec51fbffdcfed92a4fe",
-    measurementId: "G-L4HKYEK1XQ"
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID,
+    measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
 
 export const app = initializeApp(firebaseConfig);
