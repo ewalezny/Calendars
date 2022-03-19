@@ -31,7 +31,7 @@ const logInWithEmailAndPassword = async (email, password) => {
         await signInWithEmailAndPassword(auth, email, password);
     } catch (err) {
         console.error(err);
-        alert(err.message);
+        alert(err);
     }
 }
 
@@ -47,7 +47,7 @@ const registerWithEmailAndPassword = async (name, email, password) => {
         })
     } catch (err) {
         console.error(err);
-        alert(err.message);
+        alert(err);
     }
 }
 
@@ -57,7 +57,7 @@ const sendPasswordReset = async (email) => {
         alert("Password reset link sent!");
     } catch(err) {
         console.error(err);
-        alert(err.message);
+        alert(err);
     }
 }
 

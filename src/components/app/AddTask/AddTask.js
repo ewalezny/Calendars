@@ -64,6 +64,8 @@ const AddTask = () => {
                             sx={{margin: "15px", width: "95%"}}
                             value={title}
                             onChange={e => setTitle(e.target.value)}
+                            error={title === ""}
+                            helperText={title === "" ? "Empty field" : ""}
                         />
                         <TextField
                             type={"text"}
