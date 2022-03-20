@@ -38,7 +38,7 @@ const Login = () => {
                         sx={{margin: "15px", width: "95%"}}
                     />
                     <TextField
-                        type={"password"}
+                        type={"text"}
                         label={"Password"}
                         value={password}
                         onChange={e => setPassword(e.target.value)}
