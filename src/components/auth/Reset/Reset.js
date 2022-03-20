@@ -1,18 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { Link, useNavigate } from "react-router-dom";
-import {auth, sendPasswordReset} from "../../../firebase";
+import React, { useState } from "react";
+import {useSendPasswordResetEmail} from "react-firebase-hooks/auth";
+import { Link } from "react-router-dom";
+import {auth} from "../../../firebase";
 import {Button, Container, Paper, TextField, Typography} from "@mui/material";
 
 const Reset = () => {
     const [email, setEmail] = useState("");
-    const [user, loading] = useAuthState(auth);
-    const navigate = useNavigate();
+    const [sendPasswordResetEmail, sending, error] = useSendPasswordResetEmail(
+        auth
+    );
 
-    useEffect(() => {
-        if (loading) return;
-        if (user) navigate("/addTask");
-    }, [user, loading, navigate])
+    console.log(sending, error);
 
     return (
         <Container>
@@ -41,7 +39,7 @@ const Reset = () => {
                         variant={"contained"}
                         size={"large"}
                         sx={{margin: "15px", width: "50%", padding: "10px", fontSize: "1rem"}}
-                        onClick={() => sendPasswordReset(email)}
+                        onClick={() => sendPasswordResetEmail(email)}
                     >
                         Send
                     </Button>

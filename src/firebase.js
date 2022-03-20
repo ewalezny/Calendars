@@ -57,7 +57,6 @@ const sendPasswordReset = async (email) => {
         alert("Password reset link sent!");
     } catch(err) {
         console.error(err);
-        alert(err);
     }
 }
 

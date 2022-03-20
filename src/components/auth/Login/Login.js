@@ -1,14 +1,23 @@
 import React, {useState, useEffect} from "react";
 import {Link, useNavigate} from "react-router-dom";
-import {auth, logInWithEmailAndPassword} from "../../../firebase";
-import {useAuthState} from "react-firebase-hooks/auth";
+import {app} from "../../../firebase";
+import {useSignInWithEmailAndPassword} from "react-firebase-hooks/auth";
 import {Button, Container, Paper, TextField, Typography} from "@mui/material";
+import {getAuth} from "firebase/auth";
+
+const auth = getAuth(app);
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [user, loading] = useAuthState(auth);
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
     const navigate = useNavigate();
+    console.log(error?.message);
 
     useEffect(() => {
         if (loading) return;
@@ -50,7 +59,7 @@ const Login = () => {
                         variant={"contained"}
                         size={"large"}
                         sx={{margin: "15px", width: "50%", padding: "10px", fontSize: "1rem"}}
-                        onClick={() => logInWithEmailAndPassword(email, password)}
+                        onClick={() => signInWithEmailAndPassword(email, password)}
                     >
                         Log in
                     </Button>

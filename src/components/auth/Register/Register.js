@@ -1,19 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
-import {auth, registerWithEmailAndPassword} from "../../../firebase";
+import {auth} from "../../../firebase";
 import {Button, Container, Paper, TextField, Typography} from "@mui/material";
 
 const Register = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
-    const [user, loading] = useAuthState(auth);
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useCreateUserWithEmailAndPassword(auth);
     const navigate = useNavigate();
+    console.log(error?.message);
 
     const register = () => {
         if (!name) alert("Proszę podać imię");
-        registerWithEmailAndPassword(name, email, password)
+        createUserWithEmailAndPassword(email, password)
     }
 
     useEffect(() => {
