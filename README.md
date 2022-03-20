@@ -5,6 +5,8 @@ It's a responsive app for organizing time schedules. There is a form to add a ta
 
 ## Live demo
 
+https://ewalezny-calendars.netlify.app/
+
 ## Technologies
 
 React, React Router, Material UI, firebase, HTML
