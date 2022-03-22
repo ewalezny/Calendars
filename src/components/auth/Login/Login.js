@@ -17,7 +17,6 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
     const navigate = useNavigate();
-    console.log(error?.message);
 
     useEffect(() => {
         if (loading) return;
@@ -37,6 +36,15 @@ const Login = () => {
                         color={"secondary"}
                     >
                         Log in
+                    </Typography>
+                    <Typography
+                        variant="h6"
+                        component="h2"
+                        align={"center"}
+                        sx={{padding: "20px"}}
+                        color={"red"}
+                    >
+                        {error?.message}
                     </Typography>
                     <TextField
                         type={"text"}
@@ -63,7 +71,7 @@ const Login = () => {
                     >
                         Log in
                     </Button>
-                    <div style={{ margin: "15px" }}>
+                    <div style={{ margin: "30px 15px" }}>
                         <Link to="/reset" style={{ textDecoration: "none", color: "black" }}>
                             <Typography variant="body1" paragraph align="center">
                                 Forgot password?

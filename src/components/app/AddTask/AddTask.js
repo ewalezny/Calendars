@@ -12,6 +12,7 @@ const AddTask = () => {
     const [description, setDescription] = useState("");
     const [start, setStart] = useState(Date.now());
     const [end, setEnd] = useState(Date.now());
+    const [errors, setErrors] = useState([]);
 
     const handleChangeStart = newStart => {
         setStart(newStart.getTime());
@@ -23,22 +24,38 @@ const AddTask = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            await addDoc(collection(db, "taskList"), {
-                title,
-                description,
-                created: Timestamp.now(),
-                start,
-                end,
-                allDay: false
-            })
-        } catch (err) {
-            console.log(err)
+
+        const errors = [];
+
+        if (title.length < 3 || title.length > 30) {
+            errors.push("Task title needs to be between 3 and 30 characters");
         }
-        setTitle("");
-        setDescription("");
-        setStart(Date.now());
-        setEnd(Date.now());
+        if (description.length < 3 || title.length > 50) {
+            errors.push("Task description needs to be between 3 and 50 characters");
+        }
+        if (end <= start) {
+            errors.push("It's not a time machine! End date should be later than start date.");
+        }
+        setErrors(errors);
+
+        if (errors.length === 0) {
+            try {
+                await addDoc(collection(db, "taskList"), {
+                    title,
+                    description,
+                    created: Timestamp.now(),
+                    start,
+                    end,
+                    allDay: false
+                })
+            } catch (err) {
+                console.log(err)
+            }
+            setTitle("");
+            setDescription("");
+            setStart(Date.now());
+            setEnd(Date.now());
+        }
     }
 
     return (
@@ -57,6 +74,17 @@ const AddTask = () => {
                         >
                             Add new task
                         </Typography>
+                        {errors && errors.map(err => (
+                            <Typography
+                                variant="h6"
+                                component="h2"
+                                align={"center"}
+                                sx={{padding: "10px"}}
+                                color={"red"}
+                            >
+                                {err}
+                            </Typography>
+                        ))}
                         <TextField
                             type={"text"}
                             label={"Task name"}
@@ -64,8 +92,6 @@ const AddTask = () => {
                             sx={{margin: "15px", width: "95%"}}
                             value={title}
                             onChange={e => setTitle(e.target.value)}
-                            error={title === ""}
-                            helperText={title === "" ? "Empty field" : ""}
                         />
                         <TextField
                             type={"text"}

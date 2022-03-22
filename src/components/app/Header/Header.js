@@ -29,8 +29,7 @@ const Header = () => {
     useEffect(() => {
         if (loading) return;
         if (!user) return navigate('/');
-        fetchUserName();
-    }, [user, loading, fetchUserName, navigate]);
+    }, [user, loading, navigate]);
 
     const handleOpenNavMenu = e => {
         setAnchorElNav(e.currentTarget);

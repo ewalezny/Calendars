@@ -10,6 +10,7 @@ const EditTask = ({open, onClose, toEditTitle, toEditDescription, id}) => {
     const [description, setDescription] = useState(toEditDescription);
     const [start, setStart] = useState(Date.now());
     const [end, setEnd] = useState(Date.now());
+    const [errors, setErrors] = useState([]);
 
     const handleChangeStart = newStart => {
         setStart(newStart.getTime());
@@ -21,18 +22,34 @@ const EditTask = ({open, onClose, toEditTitle, toEditDescription, id}) => {
 
     const handleEdit = async (e) => {
         e.preventDefault();
-        const taskDocRef = doc(db, "taskList", id)
-        try {
-            await updateDoc(taskDocRef, {
-                title,
-                description,
-                start,
-                end,
-                allDay: false
-            })
-            onClose()
-        } catch (err) {
-            console.log(err)
+
+        const errors = [];
+
+        if (title.length < 3 || title.length > 30) {
+            errors.push("Task title needs to be between 3 and 30 characters");
+        }
+        if (description.length < 3 || title.length > 50) {
+            errors.push("Task description needs to be between 3 and 50 characters");
+        }
+        if (end <= start) {
+            errors.push("It's not a time machine! End date should be later than start date.");
+        }
+        setErrors(errors);
+
+        if (errors.length === 0) {
+            const taskDocRef = doc(db, "taskList", id)
+            try {
+                await updateDoc(taskDocRef, {
+                    title,
+                    description,
+                    start,
+                    end,
+                    allDay: false
+                })
+                onClose()
+            } catch (err) {
+                console.log(err)
+            }
         }
     }
 
@@ -41,7 +58,7 @@ const EditTask = ({open, onClose, toEditTitle, toEditDescription, id}) => {
             <DialogContent>
                 <form onSubmit={handleEdit} style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
                     <Typography
-                        variant="h6"
+                        variant="h5"
                         component="h2"
                         align={"center"}
                         sx={{padding: "10px"}}
@@ -49,6 +66,17 @@ const EditTask = ({open, onClose, toEditTitle, toEditDescription, id}) => {
                     >
                         Edit task
                     </Typography>
+                    {errors && errors.map(err => (
+                        <Typography
+                            variant="h6"
+                            component="h2"
+                            align={"center"}
+                            sx={{padding: "10px"}}
+                            color={"red"}
+                        >
+                            {err}
+                        </Typography>
+                    ))}
                     <TextField
                         type={"text"}
                         label={"Task name"}

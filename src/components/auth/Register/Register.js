@@ -15,7 +15,6 @@ const Register = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
     const navigate = useNavigate();
-    console.log(error?.message);
 
     const register = () => {
         if (!name) alert("Proszę podać imię");
@@ -40,6 +39,15 @@ const Register = () => {
                         color={"secondary"}
                     >
                         Register
+                    </Typography>
+                    <Typography
+                        variant="h6"
+                        component="h2"
+                        align={"center"}
+                        sx={{padding: "20px"}}
+                        color={"red"}
+                    >
+                        {error?.message}
                     </Typography>
                     <TextField
                         type={"text"}
@@ -74,7 +82,7 @@ const Register = () => {
                     >
                         Register
                     </Button>
-                    <div style={{ margin: "15px" }}>
+                    <div style={{ margin: "30px 15px" }}>
                         <Link to="/" style={{ textDecoration: "none", color: "black" }}>
                             <Typography variant="body1" paragraph align="center">
                                 Already have an account? Log in.

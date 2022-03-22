@@ -10,8 +10,6 @@ const Reset = () => {
         auth
     );
 
-    console.log(sending, error);
-
     return (
         <Container>
             <form>
@@ -25,6 +23,15 @@ const Reset = () => {
                         color={"secondary"}
                     >
                         Reset your password
+                    </Typography>
+                    <Typography
+                        variant="h6"
+                        component="h2"
+                        align={"center"}
+                        sx={{padding: "20px"}}
+                        color={"red"}
+                    >
+                        {error?.message}
                     </Typography>
                     <TextField
                         type={"text"}
@@ -43,7 +50,7 @@ const Reset = () => {
                     >
                         Send
                     </Button>
-                    <div style={{ margin: "15px" }}>
+                    <div style={{ margin: "30px 15px" }}>
                         <Link to="/register" style={{ textDecoration: "none", color: "black" }}>
                             <Typography variant="body1" paragraph align="center">
                                 Don't have an account? Register.
