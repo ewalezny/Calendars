@@ -8,17 +8,34 @@ const Register = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
+    const [errors, setErrors] = useState([]);
     const [
         createUserWithEmailAndPassword,
         user,
-        loading,
-        error,
+        loading
     ] = useCreateUserWithEmailAndPassword(auth);
     const navigate = useNavigate();
 
-    const register = () => {
-        if (!name) alert("Proszę podać imię");
-        createUserWithEmailAndPassword(email, password)
+    const register = async (e) => {
+        e.preventDefault();
+
+        const errors = [];
+        const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+        if (name.length < 2 || name.length > 15) {
+            errors.push("Name needs to be between 2 and 15 characters");
+        }
+        if (!email.match(regex)) {
+            errors.push("Invalid email");
+        }
+        if (password.length < 5 || password.length > 20) {
+            errors.push("Password needs to be between 5 and 20 characters");
+        }
+        setErrors(errors);
+
+        if (errors.length === 0) {
+            createUserWithEmailAndPassword(email, password);
+        }
     }
 
     useEffect(() => {
@@ -40,15 +57,18 @@ const Register = () => {
                     >
                         Register
                     </Typography>
-                    <Typography
-                        variant="h6"
-                        component="h2"
-                        align={"center"}
-                        sx={{padding: "20px"}}
-                        color={"red"}
-                    >
-                        {error?.message}
-                    </Typography>
+                    {errors && errors.map(err => (
+                        <Typography
+                            variant="h6"
+                            component="h2"
+                            align={"center"}
+                            sx={{padding: "10px"}}
+                            color={"red"}
+                            key={err}
+                        >
+                            {err}
+                        </Typography>
+                    ))}
                     <TextField
                         type={"text"}
                         label={"Name"}

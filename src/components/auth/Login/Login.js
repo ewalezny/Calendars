@@ -10,11 +10,11 @@ const auth = getAuth(app);
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [errors, setErrors] = useState([]);
     const [
         signInWithEmailAndPassword,
         user,
-        loading,
-        error,
+        loading
     ] = useSignInWithEmailAndPassword(auth);
     const navigate = useNavigate();
 
@@ -22,6 +22,25 @@ const Login = () => {
         if (loading) return;
         if (user) navigate("/addTask");
     }, [user, loading, navigate]);
+
+    const login = async (e) => {
+        e.preventDefault();
+
+        const errors = [];
+        const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+        if (!email.match(regex)) {
+            errors.push("Invalid email");
+        }
+        if (password.length < 5 || password.length > 20) {
+            errors.push("Password needs to be between 5 and 20 characters");
+        }
+        setErrors(errors);
+
+        if (errors.length === 0) {
+            signInWithEmailAndPassword(email, password);
+        }
+    }
 
     return (
         <Container>
@@ -37,15 +56,18 @@ const Login = () => {
                     >
                         Log in
                     </Typography>
-                    <Typography
-                        variant="h6"
-                        component="h2"
-                        align={"center"}
-                        sx={{padding: "20px"}}
-                        color={"red"}
-                    >
-                        {error?.message}
-                    </Typography>
+                    {errors && errors.map(err => (
+                        <Typography
+                            variant="h6"
+                            component="h2"
+                            align={"center"}
+                            sx={{padding: "10px"}}
+                            color={"red"}
+                            key={err}
+                        >
+                            {err}
+                        </Typography>
+                    ))}
                     <TextField
                         type={"text"}
                         label={"E-mail"}
@@ -67,7 +89,7 @@ const Login = () => {
                         variant={"contained"}
                         size={"large"}
                         sx={{margin: "15px", width: "50%", padding: "10px", fontSize: "1rem"}}
-                        onClick={() => signInWithEmailAndPassword(email, password)}
+                        onClick={login}
                     >
                         Log in
                     </Button>

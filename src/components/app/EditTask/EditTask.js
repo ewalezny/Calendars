@@ -73,6 +73,7 @@ const EditTask = ({open, onClose, toEditTitle, toEditDescription, id}) => {
                             align={"center"}
                             sx={{padding: "10px"}}
                             color={"red"}
+                            key={err}
                         >
                             {err}
                         </Typography>
