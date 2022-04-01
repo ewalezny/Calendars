@@ -46,7 +46,7 @@ const Login = () => {
         <Container>
             <form>
                 <Paper elevation={10}
-                       sx={{margin: "50px", display: "flex", flexDirection: "column", alignItems: "center"}}>
+                       sx={{margin: "50px 20px", display: "flex", flexDirection: "column", alignItems: "center"}}>
                     <Typography
                         variant="h4"
                         component="h2"
